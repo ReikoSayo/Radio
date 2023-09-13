@@ -4,10 +4,18 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class RadioTest {
+    @Test
+    public void shouldSetQuantityRadioStations() {
+
+        Radio radio = new Radio(15);
+
+        Assertions.assertEquals(14, radio.getMaxNumberStation());
+    }
+
+    Radio radio = new Radio();
 
     @Test
     public void shouldSetNumberRadioStation() {
-        Radio radio = new Radio();
 
         radio.setCurrentNumberRadioStation(5);
 
@@ -19,19 +27,24 @@ public class RadioTest {
 
     @Test
     public void shouldSetMaxNumberRadioStation() {
-        Radio radio = new Radio();
-
-        radio.setCurrentNumberRadioStation(9);
 
         int expected = 9;
-        int actual = radio.getCurrentNumberRadioStation();
+        int actual = radio.getMaxNumberStation();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldSetMinNumberRadioStation() {
+
+        int expected = 0;
+        int actual = radio.getMinNumberStation();
 
         Assertions.assertEquals(expected, actual);
     }
 
     @Test
     public void shouldNotSetNumberRadioStationAboveMax() {
-        Radio radio = new Radio();
 
         radio.setCurrentNumberRadioStation(15);
 
@@ -43,7 +56,6 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetNumberRadioStationBelowMin() {
-        Radio radio = new Radio();
 
         radio.setCurrentNumberRadioStation(-1);
 
@@ -55,7 +67,6 @@ public class RadioTest {
 
     @Test
     public void shouldSetToPrevNumberRadioStationFromMin() {
-        Radio radio = new Radio();
 
         radio.setPrevNumberRadioStation();
 
@@ -67,7 +78,6 @@ public class RadioTest {
 
     @Test
     public void shouldSetToPrevNumberRadioStationFromMax() {
-        Radio radio = new Radio();
 
         radio.setCurrentNumberRadioStation(9);
         radio.setPrevNumberRadioStation();
@@ -80,7 +90,6 @@ public class RadioTest {
 
     @Test
     public void shouldSetToPrevNumberRadioStationFromMiddle() {
-        Radio radio = new Radio();
 
         radio.setCurrentNumberRadioStation(5);
         radio.setPrevNumberRadioStation();
@@ -93,7 +102,6 @@ public class RadioTest {
 
     @Test
     public void shouldSetToNextNumberRadioStationFromMin() {
-        Radio radio = new Radio();
 
         radio.setNextNumberRadioStation();
 
@@ -105,7 +113,6 @@ public class RadioTest {
 
     @Test
     public void shouldSetToNextNumberRadioStationFromMax() {
-        Radio radio = new Radio();
 
         radio.setCurrentNumberRadioStation(9);
         radio.setNextNumberRadioStation();
@@ -118,7 +125,6 @@ public class RadioTest {
 
     @Test
     public void shouldSetToNextNumberRadioStationFromMiddle() {
-        Radio radio = new Radio();
 
         radio.setCurrentNumberRadioStation(5);
         radio.setNextNumberRadioStation();
@@ -131,7 +137,6 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetToMinusSoundVolumeFromMin() {
-        Radio radio = new Radio();
 
         radio.setMinusSoundVolume();
 
@@ -143,7 +148,6 @@ public class RadioTest {
 
     @Test
     public void shouldSetToMinusSoundVolumeFromNotNull() {
-        Radio radio = new Radio();
 
         for (int i = 0; i < 11; i++) {
             radio.setPlusSoundVolume();
@@ -159,7 +163,6 @@ public class RadioTest {
 
     @Test
     public void shouldSetToPlusSoundVolumeFromMin() {
-        Radio radio = new Radio();
 
         radio.setPlusSoundVolume();
 
@@ -171,7 +174,6 @@ public class RadioTest {
 
     @Test
     public void shouldNotSetToPlusSoundVolumeAboveMax() {
-        Radio radio = new Radio();
 
         for (int i = 0; i < 102; i++) {
             radio.setPlusSoundVolume();

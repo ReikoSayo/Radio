@@ -1,18 +1,36 @@
 package ru.netology.javaqa.javaqamvn.radio;
 
-public class Radio {
-    private int currentNumberRadioStation;
-    private int currentSoundVolume;
+import lombok.*;
 
-    public int getCurrentNumberRadioStation() {
-        return currentNumberRadioStation;
+public @Data class Radio {
+    @NonNull
+    private int quantityStations = 10;
+    @Getter
+    @NonNull
+    private int maxNumberStation = quantityStations - 1;
+    @Getter
+    private int minNumberStation = 0;
+    @Getter
+    private int currentNumberRadioStation = minNumberStation;
+    @NonNull
+    private int maxSoundVolume = 100;
+    private int minSoundVolume = 0;
+    @Getter
+    private int currentSoundVolume = minSoundVolume;
+
+    public Radio(int quantityStations) {
+        this.quantityStations = quantityStations;
+        this.maxNumberStation = quantityStations - 1;
+    }
+
+    public Radio() {
     }
 
     public void setCurrentNumberRadioStation(int newCurrentNumberRadioStation) {
-        if (newCurrentNumberRadioStation < 0) {
+        if (newCurrentNumberRadioStation < minNumberStation) {
             return;
         }
-        if (newCurrentNumberRadioStation > 9) {
+        if (newCurrentNumberRadioStation > maxNumberStation) {
             return;
         }
         currentNumberRadioStation = newCurrentNumberRadioStation;
@@ -20,32 +38,28 @@ public class Radio {
 
     public void setPrevNumberRadioStation() {
         if (currentNumberRadioStation == 0) {
-            currentNumberRadioStation = 9;
+            currentNumberRadioStation = maxNumberStation;
         } else {
             currentNumberRadioStation--;
         }
     }
 
     public void setNextNumberRadioStation() {
-        if (currentNumberRadioStation == 9) {
+        if (currentNumberRadioStation == maxNumberStation) {
             currentNumberRadioStation = 0;
         } else {
             currentNumberRadioStation++;
         }
     }
 
-    public int getCurrentSoundVolume() {
-        return currentSoundVolume;
-    }
-
     public void setPlusSoundVolume() {
-        if (currentSoundVolume < 100) {
+        if (currentSoundVolume < maxSoundVolume) {
             currentSoundVolume++;
         }
     }
 
     public void setMinusSoundVolume() {
-        if (currentSoundVolume > 0) {
+        if (currentSoundVolume > minSoundVolume) {
             currentSoundVolume--;
         }
     }
