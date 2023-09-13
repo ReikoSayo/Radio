@@ -1,39 +1,29 @@
 package ru.netology.javaqa.javaqamvn.radio;
 
-public class Radio {
+import lombok.*;
+
+public @Data class Radio {
+    @NonNull
     private int quantityStations = 10;
+    @Getter
+    @NonNull
     private int maxNumberStation = quantityStations - 1;
+    @Getter
     private int minNumberStation = 0;
+    @Getter
     private int currentNumberRadioStation = minNumberStation;
+    @NonNull
     private int maxSoundVolume = 100;
     private int minSoundVolume = 0;
+    @Getter
     private int currentSoundVolume = minSoundVolume;
 
     public Radio(int quantityStations) {
-        if (quantityStations > 0) {
-            this.quantityStations = quantityStations;
-            this.maxNumberStation = quantityStations - 1;
-        } else {
-            System.out.println("Количество радиостанций не может быть меньше 1");
-        }
+        this.quantityStations = quantityStations;
+        this.maxNumberStation = quantityStations - 1;
     }
 
     public Radio() {
-    }
-
-    public int getCurrentNumberRadioStation() {
-
-        return currentNumberRadioStation;
-    }
-
-    public int getMaxNumberRadioStation() {
-
-        return maxNumberStation;
-    }
-
-    public int getMinNumberRadioStation() {
-
-        return minNumberStation;
     }
 
     public void setCurrentNumberRadioStation(int newCurrentNumberRadioStation) {
@@ -60,10 +50,6 @@ public class Radio {
         } else {
             currentNumberRadioStation++;
         }
-    }
-
-    public int getCurrentSoundVolume() {
-        return currentSoundVolume;
     }
 
     public void setPlusSoundVolume() {

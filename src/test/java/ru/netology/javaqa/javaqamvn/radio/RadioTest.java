@@ -9,16 +9,7 @@ public class RadioTest {
 
         Radio radio = new Radio(15);
 
-        Assertions.assertEquals(14, radio.getMaxNumberRadioStation());
-    }
-
-    @Test
-    public void shouldNotSetQuantityRadioStations() {
-
-        Radio radio = new Radio(0);
-
-        Assertions.assertEquals(9, radio.getMaxNumberRadioStation());
-
+        Assertions.assertEquals(14, radio.getMaxNumberStation());
     }
 
     Radio radio = new Radio();
@@ -38,7 +29,7 @@ public class RadioTest {
     public void shouldSetMaxNumberRadioStation() {
 
         int expected = 9;
-        int actual = radio.getMaxNumberRadioStation();
+        int actual = radio.getMaxNumberStation();
 
         Assertions.assertEquals(expected, actual);
     }
@@ -47,7 +38,7 @@ public class RadioTest {
     public void shouldSetMinNumberRadioStation() {
 
         int expected = 0;
-        int actual = radio.getMinNumberRadioStation();
+        int actual = radio.getMinNumberStation();
 
         Assertions.assertEquals(expected, actual);
     }
